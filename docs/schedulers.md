@@ -6,7 +6,7 @@ sidebar_position: 8
 
 Utilize the powerful built-in scheduler to automate your scraper's recurrence and save time.
 
-## Scheduler
+---
 
 Imagine I'm a really fast writer and I publish a blog post every morning at 9 am. We don't want to push the scrape button every day, right?
 
