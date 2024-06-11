@@ -5,7 +5,6 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from 'prism-react-renderer';
-import tailwindPlugin from './plugins/tailwind-config.js'; // add this
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -22,7 +21,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'mrscraper', // Usually your GitHub org/user name.
+  organizationName: 'cahyosubroto', // Usually your GitHub org/user name.
   projectName: 'mrscraper-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
