@@ -1,10 +1,11 @@
 {
-  "name": "mrscraper",
+  "name": "mrscraper-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "clean": "rm -rf build",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -27,7 +28,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",
-    "@docusaurus/types": "3.4.0"
+    "@docusaurus/types": "3.4.0",
+    "rimraf": "^5.0.7"
   },
   "browserslist": {
     "production": [
