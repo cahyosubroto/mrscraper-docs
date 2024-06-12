@@ -1,7 +1,5 @@
 ---
-title: Integrations
 sidebar_position: 7
-slug: /integrations
 ---
 
 # Integrations
