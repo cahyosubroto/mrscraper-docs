@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-slug: /
+slug: /schedulers
 ---
 
 # Scheduler
