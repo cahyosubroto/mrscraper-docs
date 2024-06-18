@@ -46,6 +46,19 @@ const config = {
         },
       };
     },
+    [
+      '@scalar/docusaurus',
+      {
+        label: 'API Reference',
+        route: '/api-reference',
+        configuration: {
+          spec: {
+            // Put the URL to your OpenAPI document here:
+            url: 'https://raw.githubusercontent.com/cahyosubroto/mrscraper-docs/main/static/mrscraper.json',
+          },
+        },
+      },
+    ],
   ],
 
   presets: [
