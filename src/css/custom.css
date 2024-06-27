@@ -42,3 +42,13 @@
     padding: 0 2rem 0 2rem;
   }
 } */
+
+.hljs-string {
+  color: #76aedf;
+}
+
+[data-theme='dark'] {
+  pre {
+    background-color: #686868 !important;
+  }
+}
