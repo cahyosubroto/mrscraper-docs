@@ -1,859 +1,799 @@
 {
   "openapi": "3.0.3",
   "info": {
-     "title": "MrScraper API Documentation",
-     "description": "All the requests must be pointed to the following base URL:",
-     "version": "1.0.0"
+    "title": "MrScraper API Documentation",
+    "description": "All the requests must be pointed to the following base URL:",
+    "version": "1.0.0"
   },
   "servers": [
-     {
-        "url": "https://mrscraper.com"
-     }
+    {
+      "url": "https://mrscraper.com"
+    }
   ],
   "paths": {
-     "/api/account": {
-        "get": {
-           "summary": "Account summary",
-           "operationId": "accountSummary",
-           "description": "This endpoint allows you to get basic information from your account such as token usage and other stats.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": {
-                                "subscription_plan": "Ultimate",
-                                "token_usage": 137,
-                                "token_limit": 50000,
-                                "monthly_scrapes": 17,
-                                "average_tokens_scrape": 8.06
-                             }
-                          },
-                          "properties": {
-                             "data": {
-                                "type": "object",
-                                "properties": {
-                                   "subscription_plan": {
-                                      "type": "string",
-                                      "example": "Ultimate"
-                                   },
-                                   "token_usage": {
-                                      "type": "integer",
-                                      "example": 137
-                                   },
-                                   "token_limit": {
-                                      "type": "integer",
-                                      "example": 50000
-                                   },
-                                   "monthly_scrapes": {
-                                      "type": "integer",
-                                      "example": 17
-                                   },
-                                   "average_tokens_scrape": {
-                                      "type": "number",
-                                      "example": 8.06
-                                   }
-                                }
-                             }
-                          }
-                       }
+    "/api/account": {
+      "get": {
+        "summary": "Account summary",
+        "operationId": "accountSummary",
+        "description": "This endpoint allows you to get basic information from your account such as token usage and other stats.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": {
+                      "subscription_plan": "Ultimate",
+                      "token_usage": 137,
+                      "token_limit": 50000,
+                      "monthly_scrapes": 17,
+                      "average_tokens_scrape": 8.06
                     }
-                 }
-              }
-           },
-           "tags": [
-              "Account"
-           ]
-        }
-     },
-     "/api/scrapers": {
-        "get": {
-           "summary": "List all scrapers",
-           "operationId": "listAllScrapers",
-           "description": "This endpoint allows you to get a list of all your scrapers.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "subscription_plan": {
                           "type": "string",
-                          "example": "{\n \"data\": [\n  {\n   \"id\": 88683,\n   \"name\": \"My scraper 1\",\n   \"urls\": [\n     \"https://example.com/scrape-url\"\n   ],\n   \"scheduled\": false,\n   \"schedule\": null,\n   \"schedule_explanation\": null,\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n   \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n  },\n  {\n   \"id\": 88684,\n   \"name\": \"My scraper 2\",\n   \"urls\": [\n     \"https://example.com/scrape-url-alt\"\n   ],\n   \"scheduled\": true,\n   \"schedule\": \"15 1 * * *\",\n   \"schedule_explanation\": \"At 01:15 AM\",\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n   \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n  },\n ]\n}"
-                       }
+                          "example": "Ultimate"
+                        },
+                        "token_usage": {
+                          "type": "integer",
+                          "example": 137
+                        },
+                        "token_limit": {
+                          "type": "integer",
+                          "example": 50000
+                        },
+                        "monthly_scrapes": {
+                          "type": "integer",
+                          "example": 17
+                        },
+                        "average_tokens_scrape": {
+                          "type": "number",
+                          "example": 8.06
+                        }
+                      }
                     }
-                 }
+                  }
+                }
               }
-           },
-           "tags": [
-              "Scrapers"
-           ]
-        }
-     },
-     "/api/scrapers/{scraper_id}": {
-        "get": {
-           "summary": "Get a scraper",
-           "operationId": "getAScraper",
-           "description": "This endpoint allows you to get a single scraper's information.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": {
-                                "id": 88683,
-                                "name": "My scraper 1",
-                                "urls": [
-                                   "https://example.com/scrape-url"
-                                ],
-                                "scheduled": true,
-                                "schedule": "15 1 * * *",
-                                "schedule_explanation": "At 01:15 AM",
-                                "created_at": "2022-11-20T11:54:52.000000Z",
-                                "updated_at": "2022-11-20T11:54:52.000000Z"
-                             }
-                          },
-                          "properties": {
-                             "data": {
-                                "type": "object",
-                                "properties": {
-                                   "id": {
-                                      "type": "integer",
-                                      "example": 88683
-                                   },
-                                   "name": {
-                                      "type": "string",
-                                      "example": "My scraper 1"
-                                   },
-                                   "urls": {
-                                      "type": "array",
-                                      "example": [
-                                         "https://example.com/scrape-url"
-                                      ],
-                                      "items": {
-                                         "type": "string"
-                                      }
-                                   },
-                                   "scheduled": {
-                                      "type": "boolean",
-                                      "example": true
-                                   },
-                                   "schedule": {
-                                      "type": "string",
-                                      "example": "15 1 * * *"
-                                   },
-                                   "schedule_explanation": {
-                                      "type": "string",
-                                      "example": "At 01:15 AM"
-                                   },
-                                   "created_at": {
-                                      "type": "string",
-                                      "example": "2022-11-20T11:54:52.000000Z"
-                                   },
-                                   "updated_at": {
-                                      "type": "string",
-                                      "example": "2022-11-20T11:54:52.000000Z"
-                                   }
-                                }
-                             }
-                          }
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Scrapers"
-           ]
+            }
+          }
         },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "scraper_id",
-              "description": "The scraper's ID.",
-              "example": 88683,
-              "required": true,
-              "schema": {
-                 "type": "integer"
+        "tags": ["Account"]
+      }
+    },
+    "/api/scrapers": {
+      "get": {
+        "summary": "List all scrapers",
+        "operationId": "listAllScrapers",
+        "description": "This endpoint allows you to get a list of all your scrapers.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "{\n \"data\": [\n  {\n   \"id\": 88683,\n   \"name\": \"My scraper 1\",\n   \"urls\": [\n     \"https://example.com/scrape-url\"\n   ],\n   \"scheduled\": false,\n   \"schedule\": null,\n   \"schedule_explanation\": null,\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n   \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n  },\n  {\n   \"id\": 88684,\n   \"name\": \"My scraper 2\",\n   \"urls\": [\n     \"https://example.com/scrape-url-alt\"\n   ],\n   \"scheduled\": true,\n   \"schedule\": \"15 1 * * *\",\n   \"schedule_explanation\": \"At 01:15 AM\",\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n   \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n  },\n ]\n}"
+                }
               }
-           }
-        ]
-     },
-     "/api/scrapers/{scraper_id}/run": {
-        "post": {
-           "summary": "Run a scraper",
-           "operationId": "runAScraper",
-           "description": "This endpoint allows you to tell a scraper to start a scraping.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": [
-                                {
-                                   "id": 1,
-                                   "scraper_id": 88683,
-                                   "scraping_run_id": 1,
-                                   "scraper_name": "My scraper 1",
-                                   "scraped_url": "https://example.com/page-1",
-                                   "status": "running",
-                                   "content": null,
-                                   "created_at": "2022-11-20T11:54:52.000000Z",
-                                   "updated_at": "2022-11-20T11:54:52.000000Z"
-                                },
-                                {
-                                   "id": 2,
-                                   "scraper_id": 88683,
-                                   "scraper_name": "My scraper 1",
-                                   "scraped_url": "https://example.com/page-2",
-                                   "status": "queued",
-                                   "content": null,
-                                   "created_at": "2022-10-20T11:54:52.000000Z",
-                                   "updated_at": "2022-10-20T11:54:52.000000Z"
-                                }
-                             ]
-                          },
-                          "properties": {
-                             "data": {
-                                "type": "array",
-                                "example": [
-                                   {
-                                      "id": 1,
-                                      "scraper_id": 88683,
-                                      "scraping_run_id": 1,
-                                      "scraper_name": "My scraper 1",
-                                      "scraped_url": "https://example.com/page-1",
-                                      "status": "running",
-                                      "content": null,
-                                      "created_at": "2022-11-20T11:54:52.000000Z",
-                                      "updated_at": "2022-11-20T11:54:52.000000Z"
-                                   },
-                                   {
-                                      "id": 2,
-                                      "scraper_id": 88683,
-                                      "scraper_name": "My scraper 1",
-                                      "scraped_url": "https://example.com/page-2",
-                                      "status": "queued",
-                                      "content": null,
-                                      "created_at": "2022-10-20T11:54:52.000000Z",
-                                      "updated_at": "2022-10-20T11:54:52.000000Z"
-                                   }
-                                ],
-                                "items": {
-                                   "type": "object",
-                                   "properties": {
-                                      "id": {
-                                         "type": "integer",
-                                         "example": 1
-                                      },
-                                      "scraper_id": {
-                                         "type": "integer",
-                                         "example": 88683
-                                      },
-                                      "scraping_run_id": {
-                                         "type": "integer",
-                                         "example": 1
-                                      },
-                                      "scraper_name": {
-                                         "type": "string",
-                                         "example": "My scraper 1"
-                                      },
-                                      "scraped_url": {
-                                         "type": "string",
-                                         "example": "https://example.com/page-1"
-                                      },
-                                      "status": {
-                                         "type": "string",
-                                         "example": "running"
-                                      },
-                                      "content": {
-                                         "type": "string",
-                                         "example": null
-                                      },
-                                      "created_at": {
-                                         "type": "string",
-                                         "example": "2022-11-20T11:54:52.000000Z"
-                                      },
-                                      "updated_at": {
-                                         "type": "string",
-                                         "example": "2022-11-20T11:54:52.000000Z"
-                                      }
-                                   }
-                                }
-                             }
-                          }
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Scrapers"
-           ],
-           "requestBody": {
-              "required": false,
-              "content": {
-                 "application/json": {
-                    "schema": {
-                       "type": "object",
-                       "properties": {
-                          "urls": {
-                             "type": "array",
-                             "description": "The URLs to scrape if you want to override default ones.",
-                             "example": [
-                                "https://example.com/page-1",
-                                "https://example.com/page-2"
-                             ],
-                             "items": {
-                                "type": "string"
-                             }
-                          }
-                       }
-                    }
-                 }
-              }
-           }
+            }
+          }
         },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "scraper_id",
-              "description": "The scraper's ID.",
-              "example": 88683,
-              "required": true,
-              "schema": {
-                 "type": "integer"
-              }
-           }
-        ]
-     },
-     "/api/scraping-runs": {
-        "get": {
-           "summary": "List all scraping runs",
-           "operationId": "listAllScrapingRuns",
-           "description": "This endpoint allows you to list all scraping runs.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
+        "tags": ["Scrapers"]
+      }
+    },
+    "/api/scrapers/{scraper_id}": {
+      "get": {
+        "summary": "Get a scraper",
+        "operationId": "getAScraper",
+        "description": "This endpoint allows you to get a single scraper's information.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": {
+                      "id": 88683,
+                      "name": "My scraper 1",
+                      "urls": ["https://example.com/scrape-url"],
+                      "scheduled": true,
+                      "schedule": "15 1 * * *",
+                      "schedule_explanation": "At 01:15 AM",
+                      "created_at": "2022-11-20T11:54:52.000000Z",
+                      "updated_at": "2022-11-20T11:54:52.000000Z"
+                    }
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 88683
+                        },
+                        "name": {
                           "type": "string",
-                          "example": "{\n \"data\": {\n   \"id\": 12,\n   \"scraper_id\": 88683,\n   \"status\": \"succeeded\",\n   \"results\": [\n     {\n       \"id\": 1,\n       \"scraper_id\": 88683,\n       \"scraping_run_id\": 12,\n       \"scraper_name\": \"My scraper 1\",\n       \"scraped_url\": \"https://example.com/scrape-url\",\n       \"status\": \"succeeded\",\n       \"content\": \"<your-extracted-data>\",\n       \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n       \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n     }\n   ],\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n  }\n}"
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Scraping Runs"
-           ]
-        }
-     },
-     "/api/scraping-runs/{scraping_run_id_id}": {
-        "get": {
-           "summary": "Get a scraping run",
-           "operationId": "getAScrapingRun",
-           "description": "This endpoint allows you to get a scraping run batch.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
-                          "type": "string",
-                          "example": "{\n \"data\": {\n   \"id\": 12,\n   \"scraper_id\": 88683,\n   \"status\": \"succeeded\",\n   \"results\": [\n     {\n       \"id\": 1,\n       \"scraper_id\": 88683,\n       \"scraping_run_id\": 12,\n       \"scraper_name\": \"My scraper 1\",\n       \"scraped_url\": \"https://example.com/scrape-url\",\n       \"status\": \"succeeded\",\n       \"content\": \"<your-extracted-data>\",\n       \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n       \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n     }\n   ],\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n  }\n}"
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Scraping Runs"
-           ]
-        },
-        "delete": {
-           "summary": "Delete a scraping run",
-           "operationId": "deleteAScrapingRun",
-           "description": "This endpoint allows you to delete a scraping run and its results.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {},
-                          "properties": {}
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Scraping Runs"
-           ]
-        },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "scraping_run_id_id",
-              "description": "The ID of the scraping run.",
-              "example": 304556,
-              "required": true,
-              "schema": {
-                 "type": "integer"
-              }
-           },
-           {
-              "in": "path",
-              "name": "scraping_run_id",
-              "description": "The scraping run's ID.",
-              "example": 12,
-              "required": true,
-              "schema": {
-                 "type": "integer"
-              }
-           }
-        ]
-     },
-     "/api/scraping-runs/latest/{scraper_id}": {
-        "get": {
-           "summary": "Get a scraper's latest scraping run",
-           "operationId": "getAScrapersLatestScrapingRun",
-           "description": "This endpoint returns the information about the latest scraping run for a scraper.\n\nYou can use the optional `status` body parameter to filter the result for a particular scraping run status.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": null
-                          },
-                          "properties": {
-                             "data": {
-                                "type": "string",
-                                "example": null
-                             }
+                          "example": "My scraper 1"
+                        },
+                        "urls": {
+                          "type": "array",
+                          "example": ["https://example.com/scrape-url"],
+                          "items": {
+                            "type": "string"
                           }
-                       }
+                        },
+                        "scheduled": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "schedule": {
+                          "type": "string",
+                          "example": "15 1 * * *"
+                        },
+                        "schedule_explanation": {
+                          "type": "string",
+                          "example": "At 01:15 AM"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "example": "2022-11-20T11:54:52.000000Z"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "example": "2022-11-20T11:54:52.000000Z"
+                        }
+                      }
                     }
-                 }
+                  }
+                }
               }
-           },
-           "tags": [
-              "Scraping Runs"
-           ],
-           "requestBody": {
-              "required": false,
-              "content": {
-                 "application/json": {
-                    "schema": {
-                       "type": "object",
-                       "properties": {
+            }
+          }
+        },
+        "tags": ["Scrapers"]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "scraper_id",
+          "description": "The scraper's ID.",
+          "example": 88683,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/scrapers/{scraper_id}/run": {
+      "post": {
+        "summary": "Run a scraper",
+        "operationId": "runAScraper",
+        "description": "This endpoint allows you to tell a scraper to start a scraping.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": [
+                      {
+                        "id": 1,
+                        "scraper_id": 88683,
+                        "scraping_run_id": 1,
+                        "scraper_name": "My scraper 1",
+                        "scraped_url": "https://example.com/page-1",
+                        "status": "running",
+                        "content": null,
+                        "created_at": "2022-11-20T11:54:52.000000Z",
+                        "updated_at": "2022-11-20T11:54:52.000000Z"
+                      },
+                      {
+                        "id": 2,
+                        "scraper_id": 88683,
+                        "scraper_name": "My scraper 1",
+                        "scraped_url": "https://example.com/page-2",
+                        "status": "queued",
+                        "content": null,
+                        "created_at": "2022-10-20T11:54:52.000000Z",
+                        "updated_at": "2022-10-20T11:54:52.000000Z"
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "example": [
+                        {
+                          "id": 1,
+                          "scraper_id": 88683,
+                          "scraping_run_id": 1,
+                          "scraper_name": "My scraper 1",
+                          "scraped_url": "https://example.com/page-1",
+                          "status": "running",
+                          "content": null,
+                          "created_at": "2022-11-20T11:54:52.000000Z",
+                          "updated_at": "2022-11-20T11:54:52.000000Z"
+                        },
+                        {
+                          "id": 2,
+                          "scraper_id": 88683,
+                          "scraper_name": "My scraper 1",
+                          "scraped_url": "https://example.com/page-2",
+                          "status": "queued",
+                          "content": null,
+                          "created_at": "2022-10-20T11:54:52.000000Z",
+                          "updated_at": "2022-10-20T11:54:52.000000Z"
+                        }
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "scraper_id": {
+                            "type": "integer",
+                            "example": 88683
+                          },
+                          "scraping_run_id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "scraper_name": {
+                            "type": "string",
+                            "example": "My scraper 1"
+                          },
+                          "scraped_url": {
+                            "type": "string",
+                            "example": "https://example.com/page-1"
+                          },
                           "status": {
-                             "type": "string",
-                             "description": "Must be one of (running, failed, succeeded).",
-                             "example": "succeeded"
-                          }
-                       }
-                    }
-                 }
-              }
-           }
-        },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "scraper_id",
-              "description": "The scraper's ID.",
-              "example": 88683,
-              "required": true,
-              "schema": {
-                 "type": "integer"
-              }
-           }
-        ]
-     },
-     "/api/results": {
-        "get": {
-           "summary": "List all results",
-           "operationId": "listAllResults",
-           "description": "This endpoint allows you to get a list of all your scraping results.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": [
-                                {
-                                   "id": 2,
-                                   "scraper_id": 88683,
-                                   "scraping_run_id": 12,
-                                   "scraper_name": "My scraper 1",
-                                   "scraped_url": "https://example.com/scrape-url",
-                                   "status": "succeeded",
-                                   "content": "<your-extracted-data>",
-                                   "created_at": "2022-11-20T11:54:52.000000Z",
-                                   "updated_at": "2022-11-20T11:54:52.000000Z"
-                                },
-                                {
-                                   "id": 1,
-                                   "scraper_id": 88683,
-                                   "scraping_run_id": 12,
-                                   "scraper_name": "My scraper 1",
-                                   "scraped_url": "https://example.com/scrape-url",
-                                   "status": "succeeded",
-                                   "content": "<your-extracted-data>",
-                                   "created_at": "2022-10-20T11:54:52.000000Z",
-                                   "updated_at": "2022-10-20T11:54:52.000000Z"
-                                }
-                             ]
+                            "type": "string",
+                            "example": "running"
                           },
-                          "properties": {
-                             "data": {
-                                "type": "array",
-                                "example": [
-                                   {
-                                      "id": 2,
-                                      "scraper_id": 88683,
-                                      "scraping_run_id": 12,
-                                      "scraper_name": "My scraper 1",
-                                      "scraped_url": "https://example.com/scrape-url",
-                                      "status": "succeeded",
-                                      "content": "<your-extracted-data>",
-                                      "created_at": "2022-11-20T11:54:52.000000Z",
-                                      "updated_at": "2022-11-20T11:54:52.000000Z"
-                                   },
-                                   {
-                                      "id": 1,
-                                      "scraper_id": 88683,
-                                      "scraping_run_id": 12,
-                                      "scraper_name": "My scraper 1",
-                                      "scraped_url": "https://example.com/scrape-url",
-                                      "status": "succeeded",
-                                      "content": "<your-extracted-data>",
-                                      "created_at": "2022-10-20T11:54:52.000000Z",
-                                      "updated_at": "2022-10-20T11:54:52.000000Z"
-                                   }
-                                ],
-                                "items": {
-                                   "type": "object",
-                                   "properties": {
-                                      "id": {
-                                         "type": "integer",
-                                         "example": 2
-                                      },
-                                      "scraper_id": {
-                                         "type": "integer",
-                                         "example": 88683
-                                      },
-                                      "scraping_run_id": {
-                                         "type": "integer",
-                                         "example": 12
-                                      },
-                                      "scraper_name": {
-                                         "type": "string",
-                                         "example": "My scraper 1"
-                                      },
-                                      "scraped_url": {
-                                         "type": "string",
-                                         "example": "https://example.com/scrape-url"
-                                      },
-                                      "status": {
-                                         "type": "string",
-                                         "example": "succeeded"
-                                      },
-                                      "content": {
-                                         "type": "string",
-                                         "example": "<your-extracted-data>"
-                                      },
-                                      "created_at": {
-                                         "type": "string",
-                                         "example": "2022-11-20T11:54:52.000000Z"
-                                      },
-                                      "updated_at": {
-                                         "type": "string",
-                                         "example": "2022-11-20T11:54:52.000000Z"
-                                      }
-                                   }
-                                }
-                             }
+                          "content": {
+                            "type": "string",
+                            "example": null
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-11-20T11:54:52.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-11-20T11:54:52.000000Z"
                           }
-                       }
+                        }
+                      }
                     }
-                 }
+                  }
+                }
               }
-           },
-           "tags": [
-              "Results"
-           ]
+            }
+          }
+        },
+        "tags": ["Scrapers"],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "description": "The URLs to scrape if you want to override default ones.",
+                    "example": [
+                      "https://example.com/page-1",
+                      "https://example.com/page-2"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-     },
-     "/api/results/{result_id}": {
-        "get": {
-           "summary": "Get a result",
-           "operationId": "getAResult",
-           "description": "This endpoint allows you to get a scraping result.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": {
-                                "id": 1,
-                                "scraper_id": 88683,
-                                "scraping_run_id": 12,
-                                "scraper_name": "My scraper 1",
-                                "scraped_url": "https://example.com/scrape-url",
-                                "status": "succeeded",
-                                "content": "<your-extracted-data>",
-                                "created_at": "2022-11-20T11:54:52.000000Z",
-                                "updated_at": "2022-11-20T11:54:52.000000Z"
-                             }
-                          },
-                          "properties": {
-                             "data": {
-                                "type": "object",
-                                "properties": {
-                                   "id": {
-                                      "type": "integer",
-                                      "example": 1
-                                   },
-                                   "scraper_id": {
-                                      "type": "integer",
-                                      "example": 88683
-                                   },
-                                   "scraping_run_id": {
-                                      "type": "integer",
-                                      "example": 12
-                                   },
-                                   "scraper_name": {
-                                      "type": "string",
-                                      "example": "My scraper 1"
-                                   },
-                                   "scraped_url": {
-                                      "type": "string",
-                                      "example": "https://example.com/scrape-url"
-                                   },
-                                   "status": {
-                                      "type": "string",
-                                      "example": "succeeded"
-                                   },
-                                   "content": {
-                                      "type": "string",
-                                      "example": "<your-extracted-data>"
-                                   },
-                                   "created_at": {
-                                      "type": "string",
-                                      "example": "2022-11-20T11:54:52.000000Z"
-                                   },
-                                   "updated_at": {
-                                      "type": "string",
-                                      "example": "2022-11-20T11:54:52.000000Z"
-                                   }
-                                }
-                             }
-                          }
-                       }
-                    }
-                 }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "scraper_id",
+          "description": "The scraper's ID.",
+          "example": 88683,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/scraping-runs": {
+      "get": {
+        "summary": "List all scraping runs",
+        "operationId": "listAllScrapingRuns",
+        "description": "This endpoint allows you to list all scraping runs.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "{\n \"data\": {\n   \"id\": 12,\n   \"scraper_id\": 88683,\n   \"status\": \"succeeded\",\n   \"results\": [\n     {\n       \"id\": 1,\n       \"scraper_id\": 88683,\n       \"scraping_run_id\": 12,\n       \"scraper_name\": \"My scraper 1\",\n       \"scraped_url\": \"https://example.com/scrape-url\",\n       \"status\": \"succeeded\",\n       \"content\": \"<your-extracted-data>\",\n       \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n       \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n     }\n   ],\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n  }\n}"
+                }
               }
-           },
-           "tags": [
-              "Results"
-           ]
+            }
+          }
         },
-        "delete": {
-           "summary": "Delete a result",
-           "operationId": "deleteAResult",
-           "description": "This endpoint allows you to delete a scraping result.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {},
-                          "properties": {}
-                       }
-                    }
-                 }
+        "tags": ["Scraping Runs"]
+      }
+    },
+    "/api/scraping-runs/{scraping_run_id_id}": {
+      "get": {
+        "summary": "Get a scraping run",
+        "operationId": "getAScrapingRun",
+        "description": "This endpoint allows you to get a scraping run batch.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "{\n \"data\": {\n   \"id\": 12,\n   \"scraper_id\": 88683,\n   \"status\": \"succeeded\",\n   \"results\": [\n     {\n       \"id\": 1,\n       \"scraper_id\": 88683,\n       \"scraping_run_id\": 12,\n       \"scraper_name\": \"My scraper 1\",\n       \"scraped_url\": \"https://example.com/scrape-url\",\n       \"status\": \"succeeded\",\n       \"content\": \"<your-extracted-data>\",\n       \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n       \"updated_at\": \"2022-11-20T11:54:52.000000Z\"\n     }\n   ],\n   \"created_at\": \"2022-11-20T11:54:52.000000Z\",\n  }\n}"
+                }
               }
-           },
-           "tags": [
-              "Results"
-           ]
+            }
+          }
         },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "result_id",
-              "description": "The result's ID.",
-              "example": 88683,
-              "required": true,
+        "tags": ["Scraping Runs"]
+      },
+      "delete": {
+        "summary": "Delete a scraping run",
+        "operationId": "deleteAScrapingRun",
+        "description": "This endpoint allows you to delete a scraping run and its results.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {},
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Scraping Runs"]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "scraping_run_id_id",
+          "description": "The ID of the scraping run.",
+          "example": 304556,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "in": "path",
+          "name": "scraping_run_id",
+          "description": "The scraping run's ID.",
+          "example": 12,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/scraping-runs/latest/{scraper_id}": {
+      "get": {
+        "summary": "Get a scraper's latest scraping run",
+        "operationId": "getAScrapersLatestScrapingRun",
+        "description": "This endpoint returns the information about the latest scraping run for a scraper.\n\nYou can use the optional `status` body parameter to filter the result for a particular scraping run status.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": null
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Scraping Runs"],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
               "schema": {
-                 "type": "integer"
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "Must be one of (running, failed, succeeded).",
+                    "example": "succeeded"
+                  }
+                }
               }
-           }
-        ]
-     },
-     "/api/results/latest/{scraper_id}": {
-        "get": {
-           "summary": "Get a scraper's latest result",
-           "operationId": "getAScrapersLatestResult",
-           "description": "This endpoint returns the information about the latest result for a scraper.\n\nYou can use the optional `status` body parameter to filter the result for a particular scraping status.",
-           "parameters": [],
-           "responses": {
-              "200": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "data": null
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "scraper_id",
+          "description": "The scraper's ID.",
+          "example": 88683,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/results": {
+      "get": {
+        "summary": "List all results",
+        "operationId": "listAllResults",
+        "description": "This endpoint allows you to get a list of all your scraping results.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": [
+                      {
+                        "id": 2,
+                        "scraper_id": 88683,
+                        "scraping_run_id": 12,
+                        "scraper_name": "My scraper 1",
+                        "scraped_url": "https://example.com/scrape-url",
+                        "status": "succeeded",
+                        "content": "<your-extracted-data>",
+                        "created_at": "2022-11-20T11:54:52.000000Z",
+                        "updated_at": "2022-11-20T11:54:52.000000Z"
+                      },
+                      {
+                        "id": 1,
+                        "scraper_id": 88683,
+                        "scraping_run_id": 12,
+                        "scraper_name": "My scraper 1",
+                        "scraped_url": "https://example.com/scrape-url",
+                        "status": "succeeded",
+                        "content": "<your-extracted-data>",
+                        "created_at": "2022-10-20T11:54:52.000000Z",
+                        "updated_at": "2022-10-20T11:54:52.000000Z"
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "example": [
+                        {
+                          "id": 2,
+                          "scraper_id": 88683,
+                          "scraping_run_id": 12,
+                          "scraper_name": "My scraper 1",
+                          "scraped_url": "https://example.com/scrape-url",
+                          "status": "succeeded",
+                          "content": "<your-extracted-data>",
+                          "created_at": "2022-11-20T11:54:52.000000Z",
+                          "updated_at": "2022-11-20T11:54:52.000000Z"
+                        },
+                        {
+                          "id": 1,
+                          "scraper_id": 88683,
+                          "scraping_run_id": 12,
+                          "scraper_name": "My scraper 1",
+                          "scraped_url": "https://example.com/scrape-url",
+                          "status": "succeeded",
+                          "content": "<your-extracted-data>",
+                          "created_at": "2022-10-20T11:54:52.000000Z",
+                          "updated_at": "2022-10-20T11:54:52.000000Z"
+                        }
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 2
                           },
-                          "properties": {
-                             "data": {
-                                "type": "string",
-                                "example": null
-                             }
-                          }
-                       }
-                    }
-                 }
-              }
-           },
-           "tags": [
-              "Results"
-           ],
-           "requestBody": {
-              "required": false,
-              "content": {
-                 "application/json": {
-                    "schema": {
-                       "type": "object",
-                       "properties": {
+                          "scraper_id": {
+                            "type": "integer",
+                            "example": 88683
+                          },
+                          "scraping_run_id": {
+                            "type": "integer",
+                            "example": 12
+                          },
+                          "scraper_name": {
+                            "type": "string",
+                            "example": "My scraper 1"
+                          },
+                          "scraped_url": {
+                            "type": "string",
+                            "example": "https://example.com/scrape-url"
+                          },
                           "status": {
-                             "type": "string",
-                             "description": "Must be one of (running, failed, succeeded).",
-                             "example": "succeeded"
-                          }
-                       }
-                    }
-                 }
-              }
-           }
-        },
-        "parameters": [
-           {
-              "in": "path",
-              "name": "scraper_id",
-              "description": "The scraper's ID.",
-              "example": 88683,
-              "required": true,
-              "schema": {
-                 "type": "integer"
-              }
-           }
-        ]
-     },
-     "/api/ai": {
-        "post": {
-           "summary": "",
-           "operationId": "postApiAi",
-           "description": "",
-           "parameters": [],
-           "responses": {
-              "401": {
-                 "description": "",
-                 "content": {
-                    "application/json": {
-                       "schema": {
-                          "type": "object",
-                          "example": {
-                             "message": "Unauthenticated."
+                            "type": "string",
+                            "example": "succeeded"
                           },
-                          "properties": {
-                             "message": {
-                                "type": "string",
-                                "example": "Unauthenticated."
-                             }
+                          "content": {
+                            "type": "string",
+                            "example": "<your-extracted-data>"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-11-20T11:54:52.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-11-20T11:54:52.000000Z"
                           }
-                       }
+                        }
+                      }
                     }
-                 }
+                  }
+                }
               }
-           },
-           "tags": [
-              "Endpoints"
-           ]
+            }
+          }
+        },
+        "tags": ["Results"]
+      }
+    },
+    "/api/results/{result_id}": {
+      "get": {
+        "summary": "Get a result",
+        "operationId": "getAResult",
+        "description": "This endpoint allows you to get a scraping result.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": {
+                      "id": 1,
+                      "scraper_id": 88683,
+                      "scraping_run_id": 12,
+                      "scraper_name": "My scraper 1",
+                      "scraped_url": "https://example.com/scrape-url",
+                      "status": "succeeded",
+                      "content": "<your-extracted-data>",
+                      "created_at": "2022-11-20T11:54:52.000000Z",
+                      "updated_at": "2022-11-20T11:54:52.000000Z"
+                    }
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "scraper_id": {
+                          "type": "integer",
+                          "example": 88683
+                        },
+                        "scraping_run_id": {
+                          "type": "integer",
+                          "example": 12
+                        },
+                        "scraper_name": {
+                          "type": "string",
+                          "example": "My scraper 1"
+                        },
+                        "scraped_url": {
+                          "type": "string",
+                          "example": "https://example.com/scrape-url"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "succeeded"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "<your-extracted-data>"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "example": "2022-11-20T11:54:52.000000Z"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "example": "2022-11-20T11:54:52.000000Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Results"]
+      },
+      "delete": {
+        "summary": "Delete a result",
+        "operationId": "deleteAResult",
+        "description": "This endpoint allows you to delete a scraping result.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {},
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Results"]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "result_id",
+          "description": "The result's ID.",
+          "example": 88683,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
         }
-     }
+      ]
+    },
+    "/api/results/latest/{scraper_id}": {
+      "get": {
+        "summary": "Get a scraper's latest result",
+        "operationId": "getAScrapersLatestResult",
+        "description": "This endpoint returns the information about the latest result for a scraper.\n\nYou can use the optional `status` body parameter to filter the result for a particular scraping status.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "data": null
+                  },
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Results"],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "Must be one of (running, failed, succeeded).",
+                    "example": "succeeded"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "scraper_id",
+          "description": "The scraper's ID.",
+          "example": 88683,
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    }
   },
   "tags": [
-     {
-        "name": "Account",
-        "description": ""
-     },
-     {
-        "name": "Scrapers",
-        "description": ""
-     },
-     {
-        "name": "Scraping Runs",
-        "description": ""
-     },
-     {
-        "name": "Results",
-        "description": ""
-     },
-     {
-        "name": "Endpoints",
-        "description": ""
-     }
+    {
+      "name": "Account",
+      "description": ""
+    },
+    {
+      "name": "Scrapers",
+      "description": ""
+    },
+    {
+      "name": "Scraping Runs",
+      "description": ""
+    },
+    {
+      "name": "Results",
+      "description": ""
+    },
+    {
+      "name": "Endpoints",
+      "description": ""
+    }
   ],
   "components": {
-     "securitySchemes": {
-        "default": {
-           "type": "http",
-           "scheme": "bearer",
-           "description": "You can retrieve your token by visiting the <b>API Tokens</b> section inside your profile page."
-        }
-     }
+    "securitySchemes": {
+      "default": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "You can retrieve your token by visiting the <b>API Tokens</b> section inside your profile page."
+      }
+    }
   },
   "security": [
-     {
-        "default": []
-     }
+    {
+      "default": []
+    }
   ]
 }
