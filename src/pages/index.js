@@ -241,29 +241,6 @@ export default function Home() {
                       class='flex text-sm text-slate-100 transition-all duration-100 hover:text-cyan-400 focus:text-cyan-400'
                     >
                       AI{' '}
-                      <span class='hidden lg:inline bg-cyan-500 text-white font-bold tracking-wide text-xs rounded py-0.5 px-2 ml-2'>
-                        beta
-                      </span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href='https://app.mrscraper.com/login'
-                      title='Log in'
-                      class='flex text-sm text-slate-100 transition-all duration-100 hover:text-cyan-400 focus:text-cyan-400'
-                    >
-                      Log In
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href='https://app.mrscraper.com/register'
-                      title='Get early access'
-                      class='flex text-sm text-slate-100 transition-all duration-100 hover:text-cyan-400 focus:text-cyan-400'
-                    >
-                      Register
                     </a>
                   </li>
                 </ul>
