@@ -37,7 +37,7 @@ function HomepageHeader() {
             <div className={styles.buttons}>
               <Link
                 className='button button--secondary button--lg'
-                to='/docs/intro'
+                to='/api-reference'
               >
                 Get Started
               </Link>
@@ -286,7 +286,7 @@ export default function Home() {
 
                   <li>
                     <a
-                      href='https://mrscraper.com/docs/api/v1'
+                      href='https://docs.mrscraper.com/'
                       target='_blank'
                       title='API documentation'
                       class='flex text-sm text-slate-100 transition-all duration-100 hover:text-cyan-400 focus:text-cyan-400'
