@@ -50,7 +50,7 @@ const config = {
       '@scalar/docusaurus',
       {
         label: 'API Reference',
-        route: '/api-reference',
+        route: '/api-reference/',
         configuration: {
           spec: {
             // Put the URL to your OpenAPI document here:
