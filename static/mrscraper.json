@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://mrscraper.com"
+      "url": "https://app.mrscraper.com"
     }
   ],
   "paths": {
