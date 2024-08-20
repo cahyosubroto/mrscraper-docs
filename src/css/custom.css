@@ -52,3 +52,9 @@
     background-color: #686868 !important;
   }
 }
+
+[data-theme='light'] {
+  .code-snippet {
+    background-color: black !important;
+  }
+}
