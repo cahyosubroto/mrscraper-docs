@@ -54,7 +54,7 @@
 }
 
 [data-theme='light'] {
-  .code-snippet {
+  .code-snippet[data-v-0981194a] {
     background-color: black !important;
   }
 }
