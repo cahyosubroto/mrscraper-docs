@@ -55,6 +55,6 @@
 
 [data-theme='light'] {
   .hljs {
-    color: black;
+    color: black !important;
   }
 }
