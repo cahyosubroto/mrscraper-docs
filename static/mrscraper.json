@@ -72,8 +72,8 @@
       "get": {
         "summary": "List all scrapers",
         "operationId": "listAllScrapers",
-        "description": "This endpoint allows you to get a list of all your scrapers.",
-        "parameters": [],
+        "description": "This endpoint allows you to get a list of all your scrapers. \n Note: our default api is using pagination and limit 15 per page, to adjust the limit you can use the query param `per_page` and `page` to navigate between pages",
+        "parameters": ["per_page=15", "page=1"],
         "responses": {
           "200": {
             "description": "",
