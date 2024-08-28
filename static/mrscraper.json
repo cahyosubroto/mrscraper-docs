@@ -68,7 +68,7 @@
         "tags": ["Account"]
       }
     },
-    "/api/scrapers": {
+    "/api/scrapers?per_page=15&page=1": {
       "get": {
         "summary": "List all scrapers",
         "operationId": "listAllScrapers",
